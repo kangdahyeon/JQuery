@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효과 메소드</title>
+    <script src = "../js/jquery-3.6.0.min.js"></script>
+    <style>
+        .content {
+            width: 400px;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <P>
+        <button class="btn1">slideUp</button>
+        <button class="btn2">fadeIn</button>
+    </P>
+    <P>
+        <button class="btn3">toggleSlide</button>
+    </P>
+    <P>
+        <button class="btn4">fadeTo(0.3)</button>
+        <button class="btn5">fadeTo(1)</button>
+    </P>
+    <div class="box">
+        <div class="content">
+            키보든 접근성이란 마우스 이벤트를 등록했을 때 만일 현재 마우스가 없더라도 제이쿼리로 만든 최소한의 기능을 키보드 만으로 사용할 수 있도록 보장하는 것을 일컬어 키보드 접근성이라 합니다. 앞서 마우스 이벤트에 대응하는 대표적인 키보드 이벤트에는 focus() 와 blur()가 있었습니다. focus() 이벤트 메서드는 선택한 요소에 포커스가 이동되면 이벤트가 발생되었고, 그와 반대로 blur()  이벤트 메서드는 선택한 요소에 생성된 포커스가 다른 요소로 이동되었을 때 이벤트가 발생되었습니다. 그래서 키보드 접근성을 고려한 마우스 이벤트를 등록할 땐 포커스가 이동 가능한 요소인....
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $(".btn2").hide();
+
+            $(".btn1").on("click",function() {
+                $(".box").slideUp(1000,"linear",function(){
+                    $(".btn1").hide();
+                    $(".btn2").show();
+                });
+            });
+
+            $(".btn2").on("click",function() {
+                // 버튼 클릭시 점점 선명해지는 효과, 1초간 효과지속, 시작과끝은 느리고 중간은 빠르게 완료되면 2숨기고 1노출 
+                $(".box").fadeIn(1000,"swing",function(){
+                    $(".btn2").hide();
+                    $(".btn1").show();
+                });
+            });
+            $(".btn3").on("click",function(){
+                $(".box").fadeTo("fast",0.3);
+            });
+            $(".btn5").on("click",function(){
+                $(".box").fadeTo("fast",1);
+            });
+        });
+    </script>
+</body>
+</html>
